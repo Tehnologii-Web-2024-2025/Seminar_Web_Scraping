@@ -1,5 +1,5 @@
 import requests
-import bs4 
+from bs4 import BeautifulSoup
 import selenium
 import flask
 
@@ -32,5 +32,23 @@ import flask
 #     print(f"Status pagina {i}: {page.status_code}")
 
 
-page = requests.get("https://www.storia.ro/ro/rezultate/vanzare/apartament/bucuresti?page=1")
-print(page.text)
+# page = requests.get("https://www.storia.ro/ro/rezultate/vanzare/apartament/bucuresti?page=1")
+# print(page.text)
+
+
+digi_sitemap_index = requests.get("https://www.digi24.ro/sitemaps/sitemap-index.xml")
+
+# print("\n-------------------------------------------------------\n")
+# print(digi_sitemap_index.text)
+
+soup = BeautifulSoup(digi_sitemap_index.text, "lxml")
+
+print(soup.find_all("loc"))
+print(len(soup.find_all("loc")))
+
+for loc in soup.find_all("loc"):
+    loc_soup = BeautifulSoup(requests.get(loc.text).text, "lxml")
+    print(loc_soup.prettify())
+
+    # print(loc_soup.find_all("loc"))
+    # print(len(loc_soup.find_all("loc")))
