@@ -1,4 +1,7 @@
 import requests
+import bs4 
+import selenium
+import flask
 
 # robots = requests.get("https://www.digi24.ro/robots.txt")
 
