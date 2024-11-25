@@ -13,3 +13,34 @@
     font-size: 2rem;
     margin: 1rem 0;
 }
+
+.table-wrapper {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 5vh 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: #e6c3c3;
+}
+
+th {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+tr {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
